@@ -6329,6 +6329,8 @@ $( document ).bind( "pagecreate create", function( e ){
 
 (function( $, undefined ) {
 
+$.mobile.touchToggleEnabled = true;
+
 var slideDownClass = "ui-header-fixed ui-fixed-inline fade",
 	slideUpClass = "ui-footer-fixed ui-fixed-inline fade",
 
@@ -6374,8 +6376,7 @@ $.mobile.fixedToolbars = (function() {
 		touchStartEvent = supportTouch ? "touchstart" : "mousedown",
 		touchStopEvent = supportTouch ? "touchend" : "mouseup",
 		stateBefore = null,
-		scrollTriggered = false,
-		touchToggleEnabled = true;
+		scrollTriggered = false;
 
 	function showEventCallback( event ) {
 		// An event that affects the dimensions of the visual viewport has
@@ -6402,12 +6403,12 @@ $.mobile.fixedToolbars = (function() {
 
 		$document
 			.bind( "vmousedown", function( event ) {
-				if ( touchToggleEnabled ) {
+				if ( $.mobile.touchToggleEnabled ) {
 					stateBefore = currentstate;
 				}
 			})
 			.bind( "vclick", function( event ) {
-				if ( touchToggleEnabled ) {
+				if ( $.mobile.touchToggleEnabled ) {
 
 					if ( $(event.target).closest( ignoreTargets ).length ) {
 						return;
@@ -6665,10 +6666,6 @@ $.mobile.fixedToolbars = (function() {
 			}
 			return ( currentstate === "overlay" ) ? $.mobile.fixedToolbars.hide() :
 								$.mobile.fixedToolbars.show();
-		},
-
-		setTouchToggleEnabled: function( enabled ) {
-			touchToggleEnabled = enabled;
 		}
 	};
 })();
@@ -6747,12 +6744,14 @@ $( document ).bind( "pagecreate", function( event ) {
 						$fixies.addClass( "fade in" );
 
 						$( document ).bind( "vclick", function(){
-							$fixies
-								.removeClass( "ui-native-bars-hidden" )
-								.toggleClass( "in out" )
-								.animationComplete(function(){
-									$(this).not( ".in" ).addClass( "ui-native-bars-hidden" );
-								});
+                            if( $.mobile.touchToggleEnabled ) {
+                                $fixies
+                                    .removeClass( "ui-native-bars-hidden" )
+                                    .toggleClass( "in out" )
+                                    .animationComplete(function(){
+                                        $(this).not( ".in" ).addClass( "ui-native-bars-hidden" );
+                                    });
+                            }
 						});
 					}
 				}
