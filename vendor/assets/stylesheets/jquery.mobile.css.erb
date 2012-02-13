@@ -1178,7 +1178,7 @@ div.ui-mobile-viewport { overflow-x: hidden; }
 	overflow-scrolling: touch;
 }
 .ui-page.ui-mobile-touch-overflow,
-.ui-page.ui-mobile-touch-overflow * {
+.ui-page.ui-mobile-touch-overflow *:not(.chart *) {
 	/* some level of transform keeps elements from blinking out of visibility on iOS */
 	-webkit-transform: rotateY(0);
 }
