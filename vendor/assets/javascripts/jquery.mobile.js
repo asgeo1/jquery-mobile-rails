@@ -4252,7 +4252,7 @@ function closestEnabledButton( element ) {
 }
 
 var attachEvents = function() {
-	var hoverDelay = 200,
+	var hoverDelay = 0,
 		hov, foc;
 	$( document ).bind( {
 		"vmousedown": function( event ) {
