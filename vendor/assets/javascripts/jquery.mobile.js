@@ -7303,8 +7303,8 @@ $( document ).bind( "pagecreate create", function( e ){
 				})
 				.bind( "pageshow", function(){
 					var thisPage = this;
-					self.updatePagePadding( thisPage );
 					if( o.updatePagePadding ){
+						self.updatePagePadding( thisPage );
 						$( window ).bind( "throttledresize." + self.widgetName, function(){
 						 	self.updatePagePadding( thisPage );
 						});
