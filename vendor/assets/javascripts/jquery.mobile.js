@@ -9989,8 +9989,8 @@ $( document ).bind( "pagecreate create", function( e ) {
 		},
 
 		_handlePageShow: function() {
-			this.updatePagePadding( this._thisPage );
 			if ( this.options.updatePagePadding ) {
+				this.updatePagePadding( this._thisPage );
 				this._on( $.mobile.window, { "throttledresize": "updatePagePadding" } );
 			}
 		},
