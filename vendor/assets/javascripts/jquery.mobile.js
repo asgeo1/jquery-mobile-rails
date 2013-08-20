@@ -5148,7 +5148,7 @@ $.mobile.getMaxScrollForTransition = $.mobile.getMaxScrollForTransition || defau
 
 		//set page min-heights to be device specific
 		$.mobile.document.bind( "pageshow", $.mobile.resetActivePageHeight );
-		$.mobile.window.bind( "throttledresize", $.mobile.resetActivePageHeight );
+		//$.mobile.window.bind( "throttledresize", $.mobile.resetActivePageHeight );
 
 	};//navreadyDeferred done callback
 
